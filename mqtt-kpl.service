@@ -3,6 +3,7 @@
 Description=MQTT client for KPL
 
 [Service]
+WorkingDirectory=/root/mqtt-kpl
 ExecStart=/root/mqtt-kpl/venv/bin/python /root/mqtt-kpl/mqtt-kpl.py
 
 # Disable Python's buffering of STDOUT and STDERR, so that output from the
