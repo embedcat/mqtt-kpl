@@ -27,13 +27,16 @@ client = mqtt_client.Client()
 
 def write_logline(filename: str, text: str) -> None:
     with open(filename, "a") as logfile:
+        logger.info(f"file opened")
         now = datetime.strftime(datetime.now(), "%d-%m-%Y %H:%M:%S")
         log_text = f"[{now}] {text}\n"
-        logfile.write(log_text)
+        writed = logfile.write(log_text)
+        logger.info(f"writed = {writed}")
 
 
 def _store_message(message: mqtt_client.MQTTMessage):
     modem_id = str(message.topic.split("/")[0] if "/" in message.topic else message.topic)
+    logger.info(f"Try to write file ({EVENTS_PATH}/{modem_id}.log)")
     write_logline(f"{EVENTS_PATH}/{modem_id}.log", f"{str(message.topic)}: {message.payload.decode('utf-8')}")
 
 

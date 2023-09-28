@@ -3,7 +3,7 @@
 Description=MQTT client for KPL
 
 [Service]
-ExecStart=/usr/bin/python /root/mqtt-kpl/mqtt-kpl.py
+ExecStart=/root/mqtt-kpl/venv/bin/python /root/mqtt-kpl/mqtt-kpl.py
 
 # Disable Python's buffering of STDOUT and STDERR, so that output from the
 # service shows up immediately in systemd's logs
